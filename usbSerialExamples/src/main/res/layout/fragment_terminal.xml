@@ -75,6 +75,33 @@
             android:textOff="RI"
             android:textOn="RI" />
 
+        <Button
+            android:id="@+id/btn_send_512b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="512b" />
+
+        <Button
+            android:id="@+id/btn_send_1024b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1024b" />
+
+        <Button
+            android:id="@+id/btn_send_511b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="511b" />
+
+        <Button
+            android:id="@+id/btn_send_513b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="513b" />
+
     </LinearLayout>
 
     <View
