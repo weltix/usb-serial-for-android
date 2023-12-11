@@ -136,20 +136,35 @@ public abstract class CommonUsbSerialPort implements UsbSerialPort {
 
     @Override
     public void close() throws IOException {
+        Log.d(TAG, "close(), start");
         if (mConnection == null) {
+            Log.d(TAG, "close(), mConnection = null, Already closed");
             throw new IOException("Already closed");
         }
+        Log.d(TAG, "close(), mConnection = " + mConnection);
         try {
+            Log.d(TAG, "close(), try mUsbRequest.cancel() ...");
             mUsbRequest.cancel();
-        } catch(Exception ignored) {}
+        } catch(Exception ignored) {
+            Log.d(TAG, "close(), mUsbRequest.cancel() failed");
+        }
+        Log.d(TAG, "close(), mUsbRequest.cancel() successful, set mUsbRequest = null");
         mUsbRequest = null;
         try {
+            Log.d(TAG, "close(), before call closeInt()");
             closeInt();
-        } catch(Exception ignored) {}
+        } catch(Exception ignored) {
+            Log.d(TAG, "close(), call closeInt() > " + ignored);
+        }
         try {
+            Log.d(TAG, "close(), try mConnection.close()...");
             mConnection.close();
-        } catch(Exception ignored) {}
+        } catch(Exception ignored) {
+            Log.d(TAG, "close(), mConnection.close() failed");
+        }
+        Log.d(TAG, "close(), mConnection.close() successful, set mConnection = null");
         mConnection = null;
+        Log.d(TAG, "close(), end");
     }
 
     protected abstract void closeInt();
