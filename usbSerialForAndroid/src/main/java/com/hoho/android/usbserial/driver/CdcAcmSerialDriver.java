@@ -263,8 +263,8 @@ public class CdcAcmSerialDriver implements UsbSerialDriver {
         @Override
         protected void closeInt() {
             try {
-                mConnection.releaseInterface(mControlInterface);
                 mConnection.releaseInterface(mDataInterface);
+                mConnection.releaseInterface(mControlInterface);
             } catch(Exception ignored) {}
         }
 
